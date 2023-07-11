@@ -1,4 +1,4 @@
-import PostBookPage from "./pages/PostBookPage";
+import PostBookPage from "./page/PostBookPage";
 
 function App() {
   return (
