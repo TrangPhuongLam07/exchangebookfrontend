@@ -8,7 +8,11 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {publicRoutes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.component} />
+            <Route
+              key={index}
+              path={route.path}
+              element={route.component}
+            ></Route>
           ))}
         </Routes>
       </Suspense>
