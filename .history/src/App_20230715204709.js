@@ -1,0 +1,54 @@
+import { privateRoutes, publicRoutes } from "~/routes";
+import { Fragment, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { CssBaseline } from "@mui/material";
+import { ReactQueryDevtools } from 'react-query/devtools'
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              const Page = route.component;
+              const Layout = route.layout || Fragment;
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  }
+                />
+              );
+            })}
+            {privateRoutes.map((route, index) => {
+              const Page = route.component;
+              const Layout = route.layout || Fragment;
+              const Role = route?.role;
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <Layout>
+                      <Page />
+                    </Layout>
+                  }
+                />
+              );
+            })}
+          </Routes>
+        </Suspense>
+      </Router>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+}
+
+export default App;
