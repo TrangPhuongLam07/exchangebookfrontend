@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import PostBookPage from "./page/PostBookPage";
+import DetailPage from "./page/DetailPage";
 
 function App() {
     return (
         <div className="App">
-            <PostBookPage/>
+            <DetailPage id={"70334e59-ce8d-4395-a3f3-9fed1d07e77b"}/>
         </div>
     );
 }
