@@ -4,6 +4,7 @@ import { privateRoutes, publicRoutes } from "~/routes";
 import { Fragment, Suspense } from "react";
 import { CssBaseline } from "@mui/material";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DetailPage from "~/pages/detail";
 const queryClient = new QueryClient();
 
 function App() {
