@@ -4,6 +4,7 @@ import { lazy } from "react";
 const HomePage = lazy(() => import("~/pages/home"));
 const AddPostPage = lazy(() => import("~/pages/management/add-post"));
 const UpdatePostPage = lazy(() => import("~/pages/management/update-post"));
+const ManagementPage = lazy(() => import("~/pages/management"));
 const TransactionPage = lazy(() => import("~/pages/management/transaction"));
 
 const DetailPage = lazy(() => import("~/pages/detail"));
@@ -21,6 +22,11 @@ const publicRoutes = [
   },
 ];
 const privateRoutes = [
+  {
+    path: config.routes.management.management,
+    component: ManagementPage,
+    layout: ManagementLayout,
+  },
   {
     path: config.routes.management.add,
     component: AddPostPage,

@@ -2,8 +2,9 @@ const routes = {
   home: "/",
   detailPage: "/detail-page",
   management: {
+    management: "/management",
     add: "/management/add",
-    update: "/management/update",
+    update: "/management/update/:id",
     transaction: "/management/transaction",
   },
 
