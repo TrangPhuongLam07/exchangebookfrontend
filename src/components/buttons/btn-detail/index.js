@@ -14,7 +14,7 @@ const BtnDetail = () => {
 
     const handleExchange = () => {
       const signIn = true;
-        const pointCheck = false;
+        const pointCheck = true;
 
         //check sign in
         if (signIn == true) {
