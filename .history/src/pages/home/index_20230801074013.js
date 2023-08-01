@@ -31,8 +31,8 @@ const HomePage = () => {
   if (error) return <>Error: {error.message}</>;
   return (
     <Feed>
-      {data?.pages.map((page) => {
-        return page.map((post, i) => {
+      {data?.pages.map((page, i) => {
+        return page.map((post) => {
           // if (data?.pages.length - 1 === i) {
           //   return <Post key={uuid} ref={lastPostRef} post={post} />;
           // }

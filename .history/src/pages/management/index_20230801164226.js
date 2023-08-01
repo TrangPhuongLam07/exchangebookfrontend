@@ -36,7 +36,7 @@ const ManagementPage = () => {
 
   const { data, isLoading, isSuccess, isError } = useQuery(
     ["posts"],
-    postService.getAll
+    async () => postService.getAll()
   );
   // column defs
   const columns = useMemo(() => [
@@ -186,8 +186,9 @@ const ManagementPage = () => {
   };
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  if (isLoading) return <>Loading</>;
-
+  if (isLoading) 
+    return <>Loading</>;
+  
   if (isError) return <>Error</>;
   if (isSuccess)
     return (

@@ -39,11 +39,6 @@ const privateRoutes = [
     layout: ManagementLayout,
   },
   {
-    path: config.routes.management.profile,
-    component: ProfilePage,
-    layout: ManagementLayout,
-  },
-  {
     path: config.routes.management.transaction,
     component: TransactionPage,
     layout: ManagementLayout,
