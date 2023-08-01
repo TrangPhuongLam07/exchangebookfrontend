@@ -6,9 +6,17 @@ const AddPostPage = lazy(() => import("~/pages/management/add-post"));
 const UpdatePostPage = lazy(() => import("~/pages/management/update-post"));
 const ManagementPage = lazy(() => import("~/pages/management"));
 const TransactionPage = lazy(() => import("~/pages/management/transaction"));
+<<<<<<< HEAD
 const ProfilePage = lazy(() => import("~/pages/management/profile"));
+=======
+
+const DetailPage = lazy(() => import("~/pages/detail"));
+
+>>>>>>> 1c62a473cad30c26985ef6ebea62afb0283ffeef
 const DefaultLayout = lazy(() => import("~/layouts/default"));
 const ManagementLayout = lazy(() => import("~/layouts/management"));
+const DetailLayout = lazy(() => import("~/layouts/detail"));
+
 
 const publicRoutes = [
   {
@@ -39,8 +47,13 @@ const privateRoutes = [
     layout: ManagementLayout,
   },
   {
+<<<<<<< HEAD
     path: config.routes.management.profile,
     component: ProfilePage,
+=======
+    path: config.routes.detailPage,
+    component: DetailPage,
+>>>>>>> 1c62a473cad30c26985ef6ebea62afb0283ffeef
     layout: ManagementLayout,
   },
 ];

@@ -1,5 +1,6 @@
 const routes = {
   home: "/",
+  detailPage: "/detail-page",
   management: {
     management: "/management",
     add: "/management/add",
@@ -7,5 +8,6 @@ const routes = {
     transaction: "/management/transaction",
     profile: "/management/profile",
   },
+
 };
 export default routes;
