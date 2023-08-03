@@ -10,6 +10,10 @@ const TransactionPage = lazy(() => import("~/pages/management/transaction"));
 const ProfilePage = lazy(() => import("~/pages/management/profile"));
 
 const DetailPage = lazy(() => import("~/pages/detail"));
+const SignInPage = lazy(() => import("~/pages/signIn"));
+const SignUpPage = lazy(() => import("~/pages/signUp"));
+const resetPassPage = lazy(() => import("~/pages/resetPass"));
+const verifyEmailPage = lazy(() => import("~/pages/verifyEmail"));
 
 const DefaultLayout = lazy(() => import("~/layouts/default"));
 const ManagementLayout = lazy(() => import("~/layouts/management"));
@@ -51,6 +55,26 @@ const privateRoutes = [
   {
     path: config.routes.detailPage,
     component: DetailPage,
+    layout: ManagementLayout,
+  },
+  {
+    path: config.routes.signInPage,
+    component: SignInPage,
+    layout: ManagementLayout,
+  },
+  {
+    path: config.routes.signUpPage,
+    component: SignUpPage,
+    layout: ManagementLayout,
+  },
+  {
+    path: config.routes.resetPassPage,
+    component: resetPassPage,
+    layout: ManagementLayout,
+  },
+  {
+    path: config.routes.verifyEmailPage,
+    component: verifyEmailPage,
     layout: ManagementLayout,
   },
 ];

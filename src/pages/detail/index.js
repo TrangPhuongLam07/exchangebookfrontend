@@ -45,7 +45,12 @@ const DetailPage = (props) => {
     const updateStateBasedOnConditions = () => {
         // Example: Update the state after 3 seconds
         setTimeout(() => {
-            document.getElementById("image0").click();
+            try {
+                document.getElementById("image0").click();
+            }catch (Error){
+                console.log(Error)
+            }
+
         }, 1000);
     };
 
@@ -147,6 +152,10 @@ const DetailPage = (props) => {
                     </Grid>
                 </Box>
             </div>
+        )
+    }else{
+        return(
+            <div><h1>Không tìm thấy</h1></div>
         )
     }
 }
