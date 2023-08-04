@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useComposeState } from "~/services/ComposeStateService";
+import { useComposeState } from "~/utils/services/ComposeStateService";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 const ComposeBox = (props) => {

@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { usePointState } from "~/services/PointStateService";
+import { usePointState } from "~/utils/services/PointStateService";
 import { Box } from "@mui/material";
 const PointRequire = (props) => {
   const { pointState, setPointStateEvent } = usePointState();

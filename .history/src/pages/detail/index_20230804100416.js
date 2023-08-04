@@ -8,13 +8,13 @@ import "~/pages/detail/detailPage.css";
 import LoginRequire from "~/components/loginRequire";
 import SharedStateService, {
   useShareState,
-} from "~/services/SharedStateService";
+} from "~/utils/services/SharedStateService";
 import BtnDetail from "~/components/buttons/btn-detail";
 import PointRequire from "~/components/pointRequire";
-import PointStateService from "~/services/PointStateService";
-import ComposeStateService from "~/services/ComposeStateService";
+import PointStateService from "~/utils/services/PointStateService";
+import ComposeStateService from "~/utils/services/ComposeStateService";
 import ComposeBox from "~/components/composeBox";
-import { postService } from "~/services";
+import { postService } from "~/utils/services";
 import { useQuery } from "@tanstack/react-query";
 
 const DetailPage = (props) => {

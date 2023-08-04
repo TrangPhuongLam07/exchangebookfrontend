@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
-import { useShareState } from "~/services/SharedStateService";
-import { usePointState } from "~/services/PointStateService";
-import { useComposeState } from "~/services/ComposeStateService";
+import { useShareState } from "~/utils/services/SharedStateService";
+import { usePointState } from "~/utils/services/PointStateService";
+import { useComposeState } from "~/utils/services/ComposeStateService";
 import { useState } from "react";
 
 const BtnDetail = () => {
