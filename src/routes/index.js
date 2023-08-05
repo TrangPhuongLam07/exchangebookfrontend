@@ -12,6 +12,7 @@ const ProfilePage = lazy(() => import("~/pages/management/profile"));
 const DetailPage = lazy(() => import("~/pages/detail"));
 const SignInPage = lazy(() => import("~/pages/signIn"));
 const SignUpPage = lazy(() => import("~/pages/signUp"));
+const forgotPassPage = lazy(() => import("~/pages/forgotPass"));
 const resetPassPage = lazy(() => import("~/pages/resetPass"));
 const verifyEmailPage = lazy(() => import("~/pages/verifyEmail"));
 
@@ -68,13 +69,13 @@ const privateRoutes = [
     layout: ManagementLayout,
   },
   {
-    path: config.routes.resetPassPage,
-    component: resetPassPage,
+    path: config.routes.verifyEmailPage,
+    component: verifyEmailPage,
     layout: ManagementLayout,
   },
   {
-    path: config.routes.verifyEmailPage,
-    component: verifyEmailPage,
+    path: config.routes.forgotPassPage,
+    component: forgotPassPage,
     layout: ManagementLayout,
   },
 ];

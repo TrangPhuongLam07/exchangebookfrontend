@@ -14,18 +14,14 @@ import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 import {authService} from "~/services";
-import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-export default function VerifyEmailPage() {
+export default function VerifyPage() {
     const query = useQueryClient();
-    const navigate = useNavigate();
     //validation form with yup
     const schema = yup.object().shape({
-        email: yup.string("Email is a string")
-            .email("Please provide a valid email address")
-            .required("Please enter your email address"),
+        token: yup.string("Email is a string").required("Please enter your email address"),
     });
 //Giá trị ban đầu của sign up
     const defaultValues = {
@@ -46,28 +42,25 @@ export default function VerifyEmailPage() {
 //Xử lý verify email
     const onSubmit = async (data) => {
         console.log(data)
-        const verifyEmailRequest = {
+        const registerRequest = {
             email: data.email,
         };
 
-        handleVerifyEmail.mutate(verifyEmailRequest);
-        navigate(`/password-reset/${data.email}`)
+        handleVerifyEmail.mutate(registerRequest);
     };
 
     //Gọi api register để sign up
-    const handleVerifyEmail = useMutation(
-        {
-            mutationFn: (data) => authService.verifyEmail(data),
-            onSuccess: () => {
-                toast.success("Gửi thành công");
-                reset(defaultValues);
-                //query.invalidateQueries({queryKey: ["auth"]});
-            },
-            onError: (error) => {
-                console.log("Mutation failed", error);
-                toast.error("Gửi không thành công");
-            },
-        });
+    const handleVerifyEmail = useMutation(async (data) => authService.verifyEmail(data), {
+        onSuccess: (data) => {
+            toast.success("Đăng ký thành công");
+            reset(defaultValues);
+            query.invalidateQueries({queryKey: ["auth"]});
+        },
+        onError: (error) => {
+            console.log("Mutation failed", error);
+            toast.error("Đăng ký không thành công");
+        },
+    });
 
     const notify = () => {
         return (

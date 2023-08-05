@@ -3,8 +3,8 @@ const routes = {
   detailPage: "/detail-page",
   signInPage: "/sign-in",
   signUpPage: "/sign-up",
-  resetPassPage: "/password-reset/:email",
   verifyEmailPage: "/password-reset",
+  forgotPassPage: "/password-reset/:email",
   management: {
     management: "/management",
     add: "/management/add",
