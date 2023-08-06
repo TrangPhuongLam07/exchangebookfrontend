@@ -156,7 +156,7 @@ export default function SignInPage() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link to={"/password-reset"} variant="body2">
+                  <Link to={"/forgot-pass"} variant="body2">
                     Forgot password?
                   </Link>
                 </Grid>

@@ -6,11 +6,17 @@ const ManagementPage = lazy(() => import("~/pages/management"));
 const HomePage = lazy(() => import("~/pages/home"));
 const AddPostPage = lazy(() => import("~/pages/management/add-post"));
 const UpdatePostPage = lazy(() => import("~/pages/management/update-post"));
-const SignInPage = lazy(() => import("~/pages/auth/sign-in"));
-const SignUpPage = lazy(() => import("~/pages/auth/sign-up"));
+const SignInPage = lazy(() => import("~/pages/signIn"));
+const SignUpPage = lazy(() => import("~/pages/signUp"));
+const DetailPage = lazy(() => import("~/pages/detail"));
+const ForgotPassPage = lazy(() => import("~/pages/forgotPass"));
+const VerifyEmailPage = lazy(() => import("~/pages/verifyEmail"));
 const routes = [
   { path: "/sign-in", element: <SignInPage />, state: "sign-in", layout: null },
-  { path: "/sign-up", element: <SignUpPage />, state: "sign-in", layout: null },
+  { path: "/sign-up", element: <SignUpPage />, state: "sign-up", layout: null },
+  { path: "/detail-page", element: <DetailPage />, state: "detail-page", layout: null },
+  { path: "/forgot-pass", element: <VerifyEmailPage />, state: "forgot-pass", layout: null },
+  { path: "/forgot-pass/:email", element: <ForgotPassPage />, state: "forgot-pass", layout: null },
   { path: "/", element: <HomePage />, state: "home" },
   {
     path: "/",
