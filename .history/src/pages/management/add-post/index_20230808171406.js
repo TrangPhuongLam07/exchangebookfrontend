@@ -171,22 +171,20 @@ const AddPostPage = () => {
                 </MenuItem>
               ))}
             </Select> */}
-            <InputLabel id="demo-simple-select-helper-label">
-              Category
-            </InputLabel>
+            <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
-              label="Category"
+              value={age}
+              label="Age"
+              onChange={handleChange}
             >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {categories?.map((category) => (
-                <MenuItem key={category.id} value={category.id + ""}>
-                  {category.name}
-                </MenuItem>
-              ))}
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
             </Select>
             <FormHelperText>{errors?.category?.message}</FormHelperText>
           </FormControl>

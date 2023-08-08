@@ -4,8 +4,7 @@ import { useAuth } from "~/contexts/auth";
 const PageWrapper = ({ children, state, role = undefined }) => {
   const { auth } = useAuth();
   const location = useLocation();
-  console.log(role, auth.role);
-
+  console.log(auth);
   if (role === undefined || role === auth.role) return <>{children}</>;
   if (!auth)
     return (
