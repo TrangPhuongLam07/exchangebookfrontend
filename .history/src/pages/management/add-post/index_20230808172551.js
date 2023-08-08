@@ -62,7 +62,6 @@ const AddPostPage = () => {
     defaultValues,
   });
   const onSubmit = async (data) => {
-    data.category = +data.category;
     data.base64Images = [...selectedImgs];
     createPost.mutate(data);
   };

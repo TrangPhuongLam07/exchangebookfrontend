@@ -62,7 +62,6 @@ const AddPostPage = () => {
     defaultValues,
   });
   const onSubmit = async (data) => {
-    data.category = +data.category;
     data.base64Images = [...selectedImgs];
     createPost.mutate(data);
   };
@@ -89,6 +88,7 @@ const AddPostPage = () => {
   //   );
   //   setSelectedImgs(newSelectedImgs);
   // };
+  console.log(watch("category"));
   const createPost = useMutation(async (data) => postService.create(data), {
     onSuccess: (data) => {
       query.invalidateQueries({ queryKey: ["posts"] });
@@ -180,7 +180,6 @@ const AddPostPage = () => {
               id="demo-simple-select-helper"
               label="Category"
               value={watch("category")}
-              {...register("category")}
             >
               <MenuItem value="">
                 <em>None</em>

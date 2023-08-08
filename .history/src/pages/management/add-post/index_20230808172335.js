@@ -62,7 +62,6 @@ const AddPostPage = () => {
     defaultValues,
   });
   const onSubmit = async (data) => {
-    data.category = +data.category;
     data.base64Images = [...selectedImgs];
     createPost.mutate(data);
   };
@@ -180,7 +179,6 @@ const AddPostPage = () => {
               id="demo-simple-select-helper"
               label="Category"
               value={watch("category")}
-              {...register("category")}
             >
               <MenuItem value="">
                 <em>None</em>
