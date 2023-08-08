@@ -108,6 +108,7 @@ const AddPostPage = () => {
     justifyContent: "center",
     marginBottom: 2,
   });
+  console.log(watch("category"));
   return (
     <>
       <Box
@@ -150,43 +151,31 @@ const AddPostPage = () => {
             sx={{ m: 1, minWidth: 120, backgroundColor: color.input.bg }}
             error={!!errors?.category}
           >
-            {/* <InputLabel
+            <InputLabel
               sx={{
                 color: color.input.color,
               }}
               id="category-label"
             >
               Category
-            </InputLabel> */}
-            {/* <Select
+            </InputLabel>
+            <Select
               labelId="category-label"
               id="category"
               label="Category"
               value={watch("category")}
               {...register("category")}
             >
-              {categories?.map((category) => (
-                <MenuItem key={category.id} value={category.id + ""}>
-                  {category.name}
-                </MenuItem>
-              ))}
-            </Select> */}
-            <InputLabel id="demo-simple-select-helper-label">
-              Category
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              label="Category"
-            >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
               {categories?.map((category) => (
-                <MenuItem key={category.id} value={category.id + ""}>
+                <MenuItem key={category.id} value={category.id}>
                   {category.name}
                 </MenuItem>
               ))}
+              {/* <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem> */}
             </Select>
             <FormHelperText>{errors?.category?.message}</FormHelperText>
           </FormControl>

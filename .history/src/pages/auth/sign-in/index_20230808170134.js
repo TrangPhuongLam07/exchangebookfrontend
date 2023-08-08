@@ -45,10 +45,8 @@ const SignInPage = () => {
   const signInMutation = useMutation(async (data) => authService.signIn(data), {
     onSuccess: (data) => {
       toast.success(data.message);
-      userService.getProfile().then((data) => {
-        setAuth(data);
-        navigate(`${from || "/"}`);
-      });
+      userService.getProfile().then((data) => setAuth(data));
+      navigate(`${from || "/"}`);
     },
     onError: (error) => {
       toast.error(error.response.data.message);

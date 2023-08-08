@@ -171,13 +171,11 @@ const AddPostPage = () => {
                 </MenuItem>
               ))}
             </Select> */}
-            <InputLabel id="demo-simple-select-helper-label">
-              Category
-            </InputLabel>
+            <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
-              label="Category"
+              label="Age"
             >
               <MenuItem value="">
                 <em>None</em>
