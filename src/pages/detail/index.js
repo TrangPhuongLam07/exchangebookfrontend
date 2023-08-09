@@ -135,18 +135,18 @@ const DetailPage = (props) => {
                     <div>State: {data.status}</div>
                   </div>
                   <div>
-                    <SharedStateService>
-                      <PointStateService>
-                        <ComposeStateService>
+                  {/*  <SharedStateService>*/}
+                     {/* <PointStateService>
+                        <ComposeStateService>*/}
                           <div>
                             <BtnDetail />
                             <PointRequire />
                             <LoginRequire />
                             <ComposeBox />
                           </div>
-                        </ComposeStateService>
-                      </PointStateService>
-                    </SharedStateService>
+                       {/* </ComposeStateService>
+                      </PointStateService>*/}
+                   {/* </SharedStateService>*/}
                   </div>
                 </Box>
               </Item>

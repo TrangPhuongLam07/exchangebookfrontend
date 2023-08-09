@@ -8,8 +8,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useComposeState } from "~/services/ComposeStateService";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import {useShareState} from "~/services/SharedStateService";
 const ComposeBox = (props) => {
-  const { composeState, setComposeStateEvent } = useComposeState();
+  const { composeState, setComposeStateEvent } = useShareState();
   const handleClose = () => {
     setComposeStateEvent(false);
     console.log(composeState);

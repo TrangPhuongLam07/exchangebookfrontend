@@ -7,17 +7,25 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useShareState } from "~/services/SharedStateService";
 import { Box } from "@mui/material";
+import {useNavigate} from "react-router-dom";
 const LoginRequire = (props) => {
-  const { sharedState, setSharedStateEvent } = useShareState();
+  const { signInState, setSignInStateEvent } = useShareState();
+  const navigate = useNavigate();
   const handleClose = () => {
-    setSharedStateEvent(false);
-    console.log(sharedState);
+    setSignInStateEvent(false);
+    console.log(signInState);
   };
+  const handleSignIn = () => {
+    navigate(`/sign-in`)
+  }
 
+  const handleSignUp = () => {
+    navigate(`/sign-up`)
+  }
   return (
     <div>
       <Dialog
-        open={sharedState}
+        open={signInState}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -34,8 +42,8 @@ const LoginRequire = (props) => {
                 display: "flex",
               }}
             >
-              <Button variant="contained">Sign in</Button>
-              <Button variant="contained">Sign up</Button>
+              <Button variant="contained" onClick={handleSignIn}>Sign in</Button>
+              <Button variant="contained" onClick={handleSignUp}>Sign up</Button>
             </Box>
           </div>
         </DialogContent>
