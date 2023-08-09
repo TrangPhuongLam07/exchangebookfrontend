@@ -1,11 +1,22 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "~/contexts/auth";
+import {useEffect} from "react";
+import {userService} from "~/services";
 
 const PageWrapper = ({ children, state, role = undefined }) => {
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const location = useLocation();
   console.log(role, auth.role);
 
+/*  useEffect(() => {
+    userService.getProfile().then((data) => {
+      setAuth(data);
+      console.log("auth "+auth)
+    });
+  }, []);*/
+ /* userService.getProfile().then((data) => {
+    setAuth(data);
+  });*/
   if (role === undefined || role === auth.role) return <>{children}</>;
   if (!auth)
     return (

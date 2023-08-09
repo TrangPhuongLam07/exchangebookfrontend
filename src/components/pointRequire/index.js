@@ -7,12 +7,18 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { usePointState } from "~/services/PointStateService";
 import { Box } from "@mui/material";
+import {useShareState} from "~/services/SharedStateService";
+import {useNavigate} from "react-router-dom";
 const PointRequire = (props) => {
-  const { pointState, setPointStateEvent } = usePointState();
+  const { pointState, setPointStateEvent } = useShareState();
+  const navigate = useNavigate();
   const handleClose = () => {
     setPointStateEvent(false);
     console.log(pointState);
   };
+  const handleCheckPoint=()=>{
+    navigate(`/management/posts/add`)
+  }
 
   return (
     <div>
@@ -32,7 +38,7 @@ const PointRequire = (props) => {
               marginLeft: 25,
             }}
           >
-            <Button variant="contained">Post book</Button>
+            <Button variant="contained" onClick={handleCheckPoint}>Post book</Button>
           </Box>
         </DialogContent>
         <DialogActions>

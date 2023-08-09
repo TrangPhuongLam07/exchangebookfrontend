@@ -11,11 +11,16 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
+import {useShareState} from "~/services/SharedStateService";
+import {authService, userService} from "~/services";
+import {useMutation} from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const {signInState, setSignInStateEvent, setPointStateEvent} = useShareState();
   const navigate = useNavigate();
   const handleToggle = () => {
     setOpen(!open);
@@ -46,6 +51,44 @@ const Header = () => {
       display: "none",
     },
   }));
+  const handleLogout = async () => {
+    logout.mutate();
+  }
+  const logout = useMutation(async (data) => authService.logout(data),
+      {
+        onSuccess: (data) => {
+          toast.success("Đăng Xuất thành công");
+          //handleUserLogin();
+         // navigate(`/`)
+          console.log(signInState)
+        },
+        onError: (err) => {
+          console.log("Mutation failed", err);
+          toast.error("Đăng xuất không thành công")
+          console.log(signInState)
+        },
+      });
+  const handleUserLogin = async () => {
+    //Lấy data user login
+    const res = await userService.getUserSignIn();
+    console.log(res)
+    console.log(res.status)
+    console.log("data: "+res.data)
+    //set state login
+    if (res.data != ''| res.data!= null){
+      setSignInStateEvent(true);
+      //set state point
+      if(res.data.point >0) setPointStateEvent(true);
+    }
+
+    console.log(signInState)
+  }
+  useEffect(() => {
+    handleUserLogin().then({
+
+    });
+  }, );
+
   return (
     <AppBar position="sticky">
       <StyledToobar>
@@ -104,7 +147,7 @@ const Header = () => {
             Profile
           </MenuItem>
           <MenuItem>My account</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </StyledToobar>
     </AppBar>
