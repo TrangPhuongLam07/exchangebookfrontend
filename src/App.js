@@ -56,7 +56,7 @@ function App() {
                                 <Route path="/sign-in" element={<SignInPage/>}/>
                                 <Route path="/sign-up" element={<SignUpPage/>}/>
                                 <Route path="/verify-email" element={<VerifyEmailPage/>}/>
-
+                              {/*  <Route path="/detail-page" element={<DetaiPage/>}/>*/}
                                 <Route path="/forgot-pass" element={<VerifyEmailPage/>}/>
                                 <Route path="/forgot-pass/:email" element={<ForgotPassPage/>}/>
                                 <Route path="/" element={<DefaultLayout/>}>

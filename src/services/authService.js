@@ -34,6 +34,14 @@ export const login = async (data) => {
   });
   return res ;
 }
+// export const register = async (data) => {
+//   httpRequest.post(REQUEST + "/register", data, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+
+// }
 
 
 export const verifyEmail = async (data) => {
