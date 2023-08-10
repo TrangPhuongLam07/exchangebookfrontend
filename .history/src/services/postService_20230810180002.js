@@ -22,9 +22,9 @@ export const getOne = async (id) => {
 export const getAll = async ({ pageParam = 1 }, page = 1) =>
   await httpRequest.get(`/${REQUEST}?page=${page}&size=${pageParam}`);
 
-export const getAllByMe = async ({ pageParam = 5 }, page = 1) =>
-  await httpRequest.get(`/users/me${REQUEST}?page=${page}&size=${pageParam}`);
-
+export const getAllByMe = async ({ pageParam = 5 }, page = 1) => {
+  await httpRequest.get(`/users/me/${REQUEST}?page=${page}&size=${pageParam}`);
+};
 export const updateOne = async (id, data) => {
   try {
     const res = await httpRequest.put(`${REQUEST}/${id}`, data, {

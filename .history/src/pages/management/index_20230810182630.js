@@ -135,7 +135,12 @@ const ManagementPage = () => {
     },
   ]);
 
-  const navigate = useNavigate();
+  // style
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  }));
 
   const [sorting, setSorting] = useState([]);
   const [filtering, setFiltering] = useState("");
@@ -173,12 +178,8 @@ const ManagementPage = () => {
   const handleSearch = (e) => {
     setFiltering(e.target.value);
   };
-  // style
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  }));
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   if (isLoading) return <>Loading</>;
   if (isError || !data) return <i>(Trống)</i>;
   if (isSuccess)

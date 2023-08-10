@@ -1,37 +1,32 @@
 import {
   Avatar,
   Box,
+  Checkbox,
+  FormControlLabel,
   Grid,
   TextField,
   Button,
   Typography,
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { authService, userService } from "~/services";
+import { authService } from "~/services";
 import { toast } from "react-hot-toast";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { useAuth } from "~/contexts/auth";
-const SignInPage = () => {
-  const navigate = useNavigate();
-  const { state } = useLocation();
-  const { setAuth } = useAuth();
+const ForgotPasswordPage = () => {
+  const naviagte = useNavigate();
+
   const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().required(),
   });
   const defaultValues = {
     email: "",
-    password: "",
   };
-  const from = state?.from.pathname;
-
   const {
     register,
-    reset,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm({
@@ -40,20 +35,20 @@ const SignInPage = () => {
     mode: "all",
   });
   const onSubmit = (data) => {
-    signInMutation.mutate(data);
+    forgotPasswordMutation.mutate(data);
   };
-  const signInMutation = useMutation(async (data) => authService.signIn(data), {
-    onSuccess: (data) => {
-      toast.success(data.message);
-      userService.getProfile().then((data) => {
-        setAuth(data);
-        navigate(`${from || "/"}`);
-      });
-    },
-    onError: (error) => {
-      toast.error("Wrong email or password");
-    },
-  });
+  const forgotPasswordMutation = useMutation(
+    async () => authService.forgotPassword(),
+    {
+      onSuccess: (data) => {
+        toast.success(data.message);
+        naviagte("/sign-in", { replace: true });
+      },
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
+    }
+  );
   return (
     <>
       <Box
@@ -68,7 +63,7 @@ const SignInPage = () => {
           <LockOutlined />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Forgot Password
         </Typography>
         <Box
           component="form"
@@ -89,36 +84,26 @@ const SignInPage = () => {
             error={!!errors?.email}
             helperText={errors?.email?.message}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            {...register("password")}
-            error={!!errors?.password}
-            helperText={errors?.password?.message}
-          />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Gửi yêu cầu
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="/forgot-password" variant="body2">
-                Forgot password?
+                Already have an account?
+                <Link href="/sign-in" variant="body2">
+                  Sign In
+                </Link>
               </Link>
             </Grid>
             <Grid item>
               Don't have an account?
-              <Link to="/sign-up" variant="body2">
+              <Link href="/sign-up" variant="body2">
                 Sign Up
               </Link>
             </Grid>
@@ -129,4 +114,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default ForgotPasswordPage;

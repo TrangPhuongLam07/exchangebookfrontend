@@ -33,9 +33,9 @@ const HomePage = () => {
     [isFetchingNextPage, fetchNextPage, hasNextPage]
   );
   console.log({ data });
-  if (isLoading) return <>Loadubg</>;
+  if (isLoading) return <>Loading</>;
   if (error) return <>Error: {error.message}</>;
-  if (data?.pages[0].length < 1) return <>No more posts</>;
+  if (data?.pages.length < 1) return <>No more posts</>;
   return (
     <Feed>
       {data?.pages.map((page) => {

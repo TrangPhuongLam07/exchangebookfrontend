@@ -31,7 +31,6 @@ const ManagementPage = () => {
     ["me/posts"],
     postService.getAllByMe
   );
-  const { postsResponses, totalItems, totalPages } = data.data;
   // column defs
   const columns = useMemo(() => [
     {
@@ -135,7 +134,12 @@ const ManagementPage = () => {
     },
   ]);
 
-  const navigate = useNavigate();
+  // style
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  }));
 
   const [sorting, setSorting] = useState([]);
   const [filtering, setFiltering] = useState("");
@@ -150,7 +154,7 @@ const ManagementPage = () => {
     getCanPreviousPage,
   } = useReactTable({
     columns,
-    data: postsResponses,
+    data: data?.postsResponses,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -173,13 +177,10 @@ const ManagementPage = () => {
   const handleSearch = (e) => {
     setFiltering(e.target.value);
   };
-  // style
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  }));
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   if (isLoading) return <>Loading</>;
+
   if (isError || !data) return <i>(Trống)</i>;
   if (isSuccess)
     return (
@@ -234,7 +235,6 @@ const ManagementPage = () => {
         </div>
       </TableContainer>
     );
-  return <></>;
 };
 
 export default ManagementPage;

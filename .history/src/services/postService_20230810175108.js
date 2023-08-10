@@ -20,11 +20,18 @@ export const getOne = async (id) => {
   }
 };
 export const getAll = async ({ pageParam = 1 }, page = 1) =>
-  await httpRequest.get(`/${REQUEST}?page=${page}&size=${pageParam}`);
+  await httpRequest.get(`/user/me/${REQUEST}?page=${page}&size=${pageParam}`);
 
-export const getAllByMe = async ({ pageParam = 5 }, page = 1) =>
-  await httpRequest.get(`/users/me${REQUEST}?page=${page}&size=${pageParam}`);
-
+export const getAllByMe = async ({ pageParam = 5 }, page = 1) => {
+  try {
+    const res = await httpRequest.get(
+      `${REQUEST}?page=${page}&size=${pageParam}`
+    );
+    return res.data.postsResponses;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const updateOne = async (id, data) => {
   try {
     const res = await httpRequest.put(`${REQUEST}/${id}`, data, {

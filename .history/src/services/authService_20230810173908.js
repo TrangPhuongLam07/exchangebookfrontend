@@ -33,18 +33,14 @@ export const signOut = async () => {
 //   return res ;
 // }
 
-export const verifyEmail = async (data) => {
-  const res = await httpRequest.post(
-    `${REQUEST}/forget-password?email=${data.email}`,
-    data,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return res;
-};
+// export const verifyEmail = async (data) => {
+//   const res = await httpRequest.post(`${REQUEST}/forget-password?email=${data.email}`, data, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// return res ;
+// }
 
 // export const forgotPass = async (data) => {
 //   const res = await httpRequest.put(

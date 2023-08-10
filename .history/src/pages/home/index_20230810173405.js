@@ -5,21 +5,16 @@ import { useCallback, useRef } from "react";
 import { postService } from "~/services";
 import { useAuth } from "~/contexts/auth";
 const HomePage = () => {
-  const {
-    data,
-    isFetchingNextPage,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isLoading,
-  } = useInfiniteQuery({
-    queryKey: ["posts"],
-    queryFn: postService.getAll,
-    getNextPageParam: (lastPage, allPages) => {
-      return allPages.length < 3 && allPages.length + 1;
-    },
-    getPreviousPageParam: (firstPage, allPages) => firstPage.prevCursor,
-  });
+  const { auth } = useAuth();
+  const { data, isFetchingNextPage, error, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: ["posts"],
+      queryFn: postService.getAll,
+      getNextPageParam: (lastPage, allPages) => {
+        return allPages.length < 3 && allPages.length + 1;
+      },
+      getPreviousPageParam: (firstPage, allPages) => firstPage.prevCursor,
+    });
   const intObserver = useRef();
   const lastPostRef = useCallback(
     (post) => {
@@ -33,9 +28,8 @@ const HomePage = () => {
     [isFetchingNextPage, fetchNextPage, hasNextPage]
   );
   console.log({ data });
-  if (isLoading) return <>Loadubg</>;
+
   if (error) return <>Error: {error.message}</>;
-  if (data?.pages[0].length < 1) return <>No more posts</>;
   return (
     <Feed>
       {data?.pages.map((page) => {
