@@ -6,7 +6,6 @@ import {
   Stack,
   Toolbar,
   Typography,
-  colors,
 } from "@mui/material";
 import size from "~/config/size";
 import color from "~/config/color";
@@ -16,12 +15,9 @@ import SidebarItemCollapse from "./sidebar-item-collapse";
 import { privateRoutes, publicRoutes } from "~/config/routes";
 import useLocalStorage from "~/hooks/useLocalStorage";
 import { FALSE } from "sass";
-import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const { setLocalStorage } = useLocalStorage("profile");
-  const navigate = useNavigate();
   const handleLogout = () => {
-    navigate("/sign-in", { replace: true });
     setLocalStorage(false);
   };
   return (
@@ -64,9 +60,7 @@ const Sidebar = () => {
             )
           ) : null
         )}
-        <Button variant="text" sx={{ color: "#fff" }} onClick={handleLogout}>
-          Logout
-        </Button>
+        <Button onClick={handleLogout}>Logout</Button>
       </List>
     </Drawer>
   );

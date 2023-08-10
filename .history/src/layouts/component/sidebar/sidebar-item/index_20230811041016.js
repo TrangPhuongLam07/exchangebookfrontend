@@ -2,7 +2,7 @@ import { ListItemButton, ListItemIcon } from "@mui/material";
 import { Link } from "react-router-dom";
 import color from "~/config/color";
 
-const SidebarItem = ({ item }) => {
+const SidebarItem = ({ item, onClick }) => {
   return (
     item.sidebarProps && (
       <ListItemButton
@@ -14,6 +14,7 @@ const SidebarItem = ({ item }) => {
           },
           padding: "12px 24px",
         }}
+        onClick={onClick}
       >
         <ListItemIcon
           sx={{

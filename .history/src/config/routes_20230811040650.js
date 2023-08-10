@@ -2,7 +2,6 @@ import { lazy } from "react";
 import { AutoStories, HomeMini, ModeEdit, PostAdd } from "@mui/icons-material";
 import { ROLE } from "./const";
 import { authService } from "~/services";
-import useLocalStorage from "~/hooks/useLocalStorage";
 
 const UpdatePostPage = lazy(() => import("~/pages/management/update-post"));
 
@@ -61,5 +60,11 @@ export const privateRoutes = [
         role: ROLE.USER,
       },
     ],
+  },
+  {
+    sidebarProps: {
+      displayText: "Logout",
+      onClick: authService.signOut,
+    },
   },
 ];

@@ -62,4 +62,9 @@ export const privateRoutes = [
       },
     ],
   },
+  {
+    sidebarProps: {
+      displayText: "Logout",
+    },
+  },
 ];

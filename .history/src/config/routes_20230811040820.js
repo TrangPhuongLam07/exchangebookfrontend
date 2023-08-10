@@ -12,6 +12,8 @@ const HomePage = lazy(() => import("~/pages/home"));
 
 const AddPostPage = lazy(() => import("~/pages/management/add-post"));
 
+const { setLocalStorage } = useLocalStorage("profile");
+
 export const publicRoutes = [
   {
     path: "/",
@@ -61,5 +63,11 @@ export const privateRoutes = [
         role: ROLE.USER,
       },
     ],
+  },
+  {
+    sidebarProps: {
+      displayText: "Logout",
+      onClick: () => setLocalStorage(false),
+    },
   },
 ];
