@@ -8,22 +8,36 @@ import {useQuery} from "@tanstack/react-query";
 import {useAuth} from "~/contexts/auth";
 
 const BtnDetail = () => {
-    const {signInState, isSignIn, checkPoint,
+    const {
+        signInState, isSignIn, checkPoint,
         setSignInStateEvent, setIsSignInEvent,
-        setCheckPointEvent, setPointStateEvent, setComposeStateEvent} = useShareState();
-   // const {pointState, setPointStateEvent} = useShareState();
-  //  const {composeState, setComposeStateEvent} = useShareState();
-    const { auth, setAuth } = useAuth();
-    const { data, isLoading, isSuccess } = useQuery(["posts"], async () =>
-       userService.getProfile()
-        //postService.getOne(1)
-    );
+        setCheckPointEvent, setPointStateEvent, setComposeStateEvent
+    } = useShareState();
+    const {auth, setAuth} = useAuth();
 
+
+    const handleUserLogin = async () => {
+        //Lấy data user login
+        //lay du lieu va kiem tra sign in cua user
+        userService.getProfile().then((data) => {
+            setAuth(data);
+            console.log("auth " + auth.point)
+
+        });
+        if (auth != undefined) {
+            setIsSignInEvent(true);
+            userService.checkPoint().then((data) => {
+                setCheckPointEvent(data);
+            });
+        }
+        console.log("is Login" + isSignIn)
+    }
     const handleExchange = () => {
-        const signIn = true;
-        const pointCheck = true;
-      //  const  res = userService.getProfile();
-       // console.log("res: "+res);
+        //lay du lieu va kiem tra sign in cua user
+        handleUserLogin().then((data) => {
+
+        });
+        //Xu lý hien thi các yeu cau sigin, post book, send mail
         //check sign in
         if (isSignIn) {
             //check point
@@ -36,37 +50,14 @@ const BtnDetail = () => {
             setSignInStateEvent(true);
         }
 
-        console.log(isSignIn);
     };
+    /*  useEffect(() => {
+          //lay du lieu va kiem tra sign in cua user
+          handleUserLogin().then((data) => {
 
-    const handleUserLogin = async () => {
-        //Lấy data user login
-        //Lấy dữ liệu bài đăng bằng id
+          });
+      }, []);*/
 
-       // const res = await userService.getUserSignIn();
-        console.log("data: " +data)
-        console.log("data.?: " + data.data)
-       // console.log("point: " + data.point)
-        //set state login
-        if (data.status == 200) {
-            setIsSignInEvent(true);
-            //set state point
-            //if (data.point > 0) setCheckPointEvent(true);
-        }
-
-        console.log("is Login"+isSignIn)
-    }
-
-    useEffect(() => {
-        /*handleUserLogin().then({
-
-        });*/
-       /* userService.getProfile().then((data) => {
-            setAuth(data);
-            console.log("auth "+auth)
-
-        });*/
-    }, );
     return (
         <>
             <Button variant="contained" onClick={handleExchange}>

@@ -7,7 +7,7 @@ const UpdatePostPage = lazy(() => import("~/pages/management/update-post"));
 const ManagementPage = lazy(() => import("~/pages/management"));
 const ManagementLayout = lazy(() => import("~/layouts/management"));
 const HomePage = lazy(() => import("~/pages/home"));
-
+const DetaiPage = lazy(() => import("~/pages/detail"));
 const AddPostPage = lazy(() => import("~/pages/management/add-post"));
 
 export const publicRoutes = [
@@ -63,5 +63,15 @@ export const privateRoutes = [
         role: ROLE.USER,
       },
     ],
+  },
+  {
+    path: "/detail-page",
+    element: <DetaiPage/>,
+    state: "detail-page",
+    sidebarProps: {
+      /* displayText: "Lịch sử tin đăng",
+       icon: <PostAdd/>,*/
+    },
+    role: ROLE.USER,
   },
 ];
