@@ -7,6 +7,7 @@ export const create = async (data, config) => {
     console.log(0);
     return response.data;
   } catch (error) {
+    console.log(1);
     console.log(error);
   }
 };

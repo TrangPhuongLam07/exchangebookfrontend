@@ -3,7 +3,7 @@ import axios from "axios";
 const httpRequest = axios.create({
   baseURL: process.env.REACT_APP_BASE_API,
   headers: {
-    "Access-Control-Allow-Origin": "http://localhost:3000", // Địa chỉ của origin bạn muốn cho phép
+    "Access-Control-Allow-Origin": "https://your-origin.com", // Địa chỉ của origin bạn muốn cho phép
   },
   withCredentials: true, // Important for sending cookies
 });

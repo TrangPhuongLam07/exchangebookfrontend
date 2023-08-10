@@ -6,6 +6,7 @@ import { postService } from "~/services";
 import { useAuth } from "~/contexts/auth";
 const HomePage = () => {
   const { auth } = useAuth();
+  console.log(auth);
   const { data, isFetchingNextPage, error, fetchNextPage, hasNextPage } =
     useInfiniteQuery({
       queryKey: ["posts"],

@@ -1,22 +1,21 @@
+import { ErrorOutlineOutlined } from "@mui/icons-material";
 import httpRequest from "~/utils/httpRequest";
 const REQUEST = "/posts";
 
-export const create = async (data, config) => {
-  try {
-    const response = await httpRequest.post(REQUEST, data, config);
-    console.log(0);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+export const create = async (data) =>
+  await httpRequest.post(REQUEST, data, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    withCredentials: true,
+  });
 
 export const getOne = async (id) => {
   try {
     const res = await httpRequest.get(REQUEST + `/${id}`);
     return res.data;
   } catch (error) {
-    console.log(error);
+    console.log(ErrorOutlineOutlined);
   }
 };
 export const getAll = async ({ pageParam = 1 }, page = 1) => {

@@ -1,13 +1,12 @@
+import { ErrorOutlineOutlined } from "@mui/icons-material";
 import httpRequest from "~/utils/httpRequest";
 const REQUEST = "/posts";
 
-export const create = async (data, config) => {
+export const create = async (data) => {
   try {
-    const response = await httpRequest.post(REQUEST, data, config);
-    console.log(0);
-    return response.data;
+    const response = await httpRequest.post(REQUEST, data);
   } catch (error) {
-    console.log(error);
+    console.log(ErrorOutlineOutlined);
   }
 };
 

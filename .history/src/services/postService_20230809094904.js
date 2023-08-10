@@ -4,7 +4,6 @@ const REQUEST = "/posts";
 export const create = async (data, config) => {
   try {
     const response = await httpRequest.post(REQUEST, data, config);
-    console.log(0);
     return response.data;
   } catch (error) {
     console.log(error);
