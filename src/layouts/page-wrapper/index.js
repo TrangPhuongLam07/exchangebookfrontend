@@ -8,25 +8,45 @@ const PageWrapper = ({ children, state, role = undefined }) => {
   const location = useLocation();
   console.log(role, auth.role);
 
-/*  useEffect(() => {
+
+ /* userService.getProfile().then((data) => {
+    setAuth(data);
+  });*/
+  const handleRole = () => {
+    if (role === undefined || role === auth.role) return <>{children}</>;
+    if (!auth)
+      return (
+          <Navigate to={"/sign-in"} state={{ from: location }} replace={true} />
+      );
+    if (role !== auth.role)
+      return (
+          <Navigate to={"/error/403"} state={{ from: location }} replace={true} />
+      );
+  }
+  const handleProfile = async () => {
     userService.getProfile().then((data) => {
       setAuth(data);
       console.log("auth "+auth)
     });
+  }
+
+  /*useEffect(() => {
+   handleProfile().then((data) => {
+    handleRole();
+   });
   }, []);*/
- /* userService.getProfile().then((data) => {
-    setAuth(data);
+ /* handleProfile().then((data) => {
+    handleRole();
   });*/
   if (role === undefined || role === auth.role) return <>{children}</>;
   if (!auth)
     return (
-      <Navigate to={"/sign-in"} state={{ from: location }} replace={true} />
+        <Navigate to={"/sign-in"} state={{ from: location }} replace={true} />
     );
   if (role !== auth.role)
     return (
-      <Navigate to={"/error/403"} state={{ from: location }} replace={true} />
+        <Navigate to={"/error/403"} state={{ from: location }} replace={true} />
     );
-
   // if (!role) {
   //   return <>{children}</>;
   // }

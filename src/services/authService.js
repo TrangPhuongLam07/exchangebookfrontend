@@ -15,12 +15,12 @@ export const signOut = async () => {
   return res.data;
 };
 export const register = async (data) => {
-  httpRequest.post(REQUEST + "/register", data, {
+  const res = await httpRequest.post(REQUEST + "/register", data, {
     headers: {
       "Content-Type": "application/json",
     },
   });
-
+return res;
 
 }
 
